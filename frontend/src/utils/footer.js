@@ -2,7 +2,7 @@
 const footer = {
     brand: {
         name: "LOGO",
-        logo: "/img/logo.svg", // public/img/logo.svg 기준
+        logo: "/img/match_plus.png", // public/img/logo.svg 기준
         copy: `© ${new Date().getFullYear()} DECODE.Lab. All rights reserved.`,
     },
     links: [

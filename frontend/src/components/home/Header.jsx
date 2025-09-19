@@ -31,7 +31,7 @@ const Header = () => {
     return (
         <header className={`${scrolled ? "scroll" : ""} ${menuOpen ? "is-open" : ""} `}>
             <div className="inner">
-                <h4>LOGO</h4>
+                <h4>MATCH PLUS</h4>
                 <div className="right-wrap">
                     <button
                         onClick={() => setMenuOpen(v => !v)}
