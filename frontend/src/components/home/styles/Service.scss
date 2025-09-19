@@ -1,0 +1,123 @@
+.service-root {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+.service-left {
+  flex: 1;
+  padding: 40px;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    color: #16161a;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .icon {
+      font-size: 30px;
+      background-color: #e5f5e8;
+      border-radius: 10px;
+      padding: 12px;
+      margin-right: 20px;
+      color: #1abe60;
+    }
+
+    .title {
+      font-weight: 600;
+      margin-right: 12px;
+      font-size: 18px;
+    }
+
+    .value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1abe60;
+      margin-right: 12px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+.service-right {
+  width: 500px;
+  position: relative;
+  padding: 30px;
+
+  .image-card {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 3px 16px rgb(0 0 0 / 0.12);
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  .badge {
+    position: absolute;
+    background-color: white;
+    padding: 8px 16px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+  }
+
+  .top-right-badge {
+    top: 12px;
+    right: 12px;
+    color: #0f9e3e; /* green */
+  }
+
+  .bottom-left-badge {
+    bottom: 12px;
+    left: 12px;
+    color: #2178f9; /* blue */
+  }
+
+  .overlay-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 0 1px 7px rgba(0,0,0,0.7);
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .service-root {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .service-right {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

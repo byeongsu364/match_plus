@@ -1,0 +1,105 @@
+.stats-root {
+  max-width: 1240px;
+  margin: 60px auto 120px;
+  padding: 0 20px;
+  text-align: center;
+
+  h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #16161a;
+  }
+
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 56px;
+    line-height: 1.6;
+  }
+
+  .stats-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: #fff;
+    min-width: 210px;
+    border-radius: 15px;
+    padding: 30px 28px;
+    text-align: left;
+    box-shadow: 0 4px 18px rgb(0 0 0 / 0.03);
+    position: relative;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 30px rgb(0 0 0 / 0.1);
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 9px;
+      background-color: #f0f6f2;  // 라이트 그린 계열 예시
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: #45b649;
+    }
+
+    .stat-main {
+      .stat-value {
+        font-size: 36px;
+        font-weight: 700;
+        color: #16161a;
+      }
+
+      .stat-label {
+        font-weight: 700;
+        font-size: 15px;
+        margin-top: 3px;
+        margin-bottom: 9px;
+        color: #242626;
+      }
+
+      .stat-desc {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.4;
+      }
+    }
+
+    .stat-growth {
+      position: absolute;
+      top: 30px;
+      right: 28px;
+      font-weight: 700;
+      font-size: 14px;
+
+      &.green {
+        color: #09b657;
+      }
+      &.blue {
+        color: #2785f7;
+      }
+      &.purple {
+        color: #8400ff;
+      }
+      &.orange {
+        color: #f7781f;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .stats-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
