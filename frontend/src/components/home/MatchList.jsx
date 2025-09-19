@@ -2,7 +2,7 @@ import React from 'react'
 
 const MatchList = () => {
     return (
-        <div>MatchList</div>
+        <div className='container'>MatchList</div>
     )
 }
 
