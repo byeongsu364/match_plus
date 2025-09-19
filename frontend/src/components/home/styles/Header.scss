@@ -1,83 +1,33 @@
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: white;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-  z-index: 999;
-
-  &.scroll {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    background-color: #f8f8f8;
-  }
-
-  &.is-open {
-    background-color: #eef4f7;
-  }
-
-  .inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px;
+.inner {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 
     h4 {
-      font-size: 22px;
-      font-weight: bold;
-      color: #1abe60;
-      margin: 0;
-      cursor: pointer;
+        left: 0;
     }
 
     .right-wrap {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+        display: flex;
+    }
 
-      .mob-nav-btn {
-        display: none; /* 모바일에서만 보이도록 미디어쿼리 적용 필요 */
-        flex-direction: column;
-        justify-content: space-between;
-        width: 24px;
-        height: 18px;
-        border: none;
-        background: transparent;
-        cursor: pointer;
+    nav {
+    ul {
+        display: flex; // 가로 배치
+        gap: 2rem; // 메뉴 간격
+        list-style: none; // 기본 점 제거
+        margin: 0;
+        padding: 0;
+    }
 
-        span {
-          display: block;
-          height: 3px;
-          background: #333;
-          border-radius: 2px;
-        }
-      }
-
-      .btn {
-        background-color: #1abe60;
-        border: none;
-        padding: 8px 15px;
-        color: white;
-        font-weight: 600;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
+    li a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #333;
+        transition: color 0.2s ease;
 
         &:hover {
-          background-color: #0f8f41;
+            color: #2e7d32; // Match Plus 메인 컬러
         }
-      }
     }
-  }
 }
-
-@media (max-width: 768px) {
-  header .right-wrap .mob-nav-btn {
-    display: flex; /* 모바일에서 메뉴 버튼 보이게 */
-  }
-  
-  header .right-wrap > :not(.mob-nav-btn) {
-    display: none; /* 모바일에서 버튼 및 Nav 숨기기 */
-  }
 }

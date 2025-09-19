@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import matchInfo from "../../utils/matchInfo.js";
 import "./styles/Service.scss";
@@ -40,14 +39,3 @@ const Service = () => {
 };
 
 export default Service;
-=======
-import React from 'react'
-
-const Service = () => {
-    return (
-        <div>Service</div>
-    )
-}
-
-export default Service
->>>>>>> main

@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from '../components/home/Header'
-<<<<<<< HEAD
 import Footer from '../components/home/Footer'
 import Hero from '../components/home/Hero'
 import MatchList from '../components/home/MatchList'
@@ -19,17 +18,8 @@ const Home = () => {
             <Service/>
             <Filter/>
             <MatchList/>
-            <Nav/>
             <Review/>
             <Footer/>
-=======
-import Hero from '../components/home/Hero'
-const Home = () => {
-    return (
-        <div>
-            <Header/>
-            <Hero/>
->>>>>>> main
         </div>
     )
 }

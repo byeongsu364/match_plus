@@ -1,5 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
 import heroServices from '../../utils/hero'  // 경로는 상황에 맞게 조정
 import './styles/Hero.scss'
 
@@ -26,13 +25,3 @@ const Hero = () => {
 }
 
 export default Hero
-=======
-import "./styles/Hero.scss"
-const Hero = () => {
-    return (
-        <div>Hero</div>
-    )
-}
-
-export default Hero
->>>>>>> main
