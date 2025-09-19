@@ -1,5 +1,6 @@
 import React from 'react'
 import useSmoothScroll from '../../hook/useSmoothScroll'
+import { FiBell, FiUser } from "react-icons/fi" 
 const Nav = () => {
     const navLink = ['Hero', 'Aboutme', 'Work', 'Contact']
 
@@ -20,6 +21,10 @@ const Nav = () => {
                     </li>
                 ))}
             </ul>
+            <div className="icons">
+                <FiBell className="icon bell" />
+                <FiUser className="icon user" />
+            </div>
         </nav>
     )
 }
