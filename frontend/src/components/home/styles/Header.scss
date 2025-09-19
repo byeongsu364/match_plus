@@ -1,0 +1,33 @@
+.inner {
+    display: flex;
+    justify-content: space-between;
+
+    h4 {
+        left: 0;
+    }
+
+    .right-wrap {
+        display: flex;
+    }
+
+    nav {
+    ul {
+        display: flex; // 가로 배치
+        gap: 2rem; // 메뉴 간격
+        list-style: none; // 기본 점 제거
+        margin: 0;
+        padding: 0;
+    }
+
+    li a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #333;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #2e7d32; // Match Plus 메인 컬러
+        }
+    }
+}
+}
