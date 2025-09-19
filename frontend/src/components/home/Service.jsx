@@ -6,7 +6,7 @@ const Service = () => {
   return (
     <section className="matchinfo-root">
       <div className="matchinfo-left">
-        <h2>신뢰할 수 있는 스포츠 매칭 서비스</h2>
+        <h2>신뢰할 수 있는 스포츠 매칭 서비스!</h2>
         <ul>
           {matchInfo.map(({ icon, title, value, desc, highlight }) => (
             <li key={title} className="matchinfo-item">
