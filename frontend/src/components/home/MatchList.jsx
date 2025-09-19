@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import matchList from "../../utils/matchlist.js";
 import "./styles/MatchList.scss";
@@ -74,3 +75,14 @@ const MatchList = () => {
 };
 
 export default MatchList;
+=======
+import React from 'react'
+
+const MatchList = () => {
+    return (
+        <div>MatchList</div>
+    )
+}
+
+export default MatchList
+>>>>>>> main
