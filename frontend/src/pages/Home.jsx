@@ -18,7 +18,6 @@ const Home = () => {
             <Service/>
             <Filter/>
             <MatchList/>
-            <Nav/>
             <Review/>
             <Footer/>
         </div>
