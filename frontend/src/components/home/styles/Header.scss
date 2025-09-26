@@ -1,33 +1,217 @@
-.inner {
+/* ==== 토큰 ==== */
+$green-500: #22c55e;
+$green-600: #16a34a;
+$green-700: #15803d;
+$orange-500: #f97316;
+$red-500: #ef4444;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-500: #6b7280;
+$text: #0f172a;
+
+$container: 1280px;
+$h: 72px;
+$radius: 14px;
+
+/* ==== 헤더 래퍼 ==== */
+.mp-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid $gray-100;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+
+  /* 하단 얇은 그린 라인 */
+  &::after {
+    content: "";
+    display: block;
+    height: 6px;
+    background: linear-gradient(90deg, $green-600, $green-700);
+  }
+
+  &.is-scrolled {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  &__inner {
+    max-width: $container;
+    height: $h;
+    margin: 0 auto;
+    padding: 0 24px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-
-    h4 {
-        left: 0;
-    }
-
-    .right-wrap {
-        display: flex;
-    }
-
-    nav {
-    ul {
-        display: flex; // 가로 배치
-        gap: 2rem; // 메뉴 간격
-        list-style: none; // 기본 점 제거
-        margin: 0;
-        padding: 0;
-    }
-
-    li a {
-        text-decoration: none;
-        font-weight: 500;
-        color: #333;
-        transition: color 0.2s ease;
-
-        &:hover {
-            color: #2e7d32; // Match Plus 메인 컬러
-        }
-    }
+    gap: 24px;
+  }
 }
+
+/* ==== 좌측 브랜드 ==== */
+.mp-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+
+  &__icon {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius;
+    background: linear-gradient(180deg, #1fbf56, #109f45);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 20px rgba(22,163,74,0.25);
+  }
+
+  &__ball {
+    font-size: 20px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #fff;
+    background: $orange-500;
+    border-radius: 9999px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 10px rgba(249,115,22,0.4);
+  }
+
+  &__text { display: block; }
+
+  &__row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    line-height: 1.1;
+  }
+
+  /* ✅ 경고 해결: 표준 background-clip 추가 + 투명 글자색 지정 */
+  &__match {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #0f9f48, #0b7f3a);
+    -webkit-background-clip: text;  /* WebKit */
+    background-clip: text;           /* 표준 */
+    -webkit-text-fill-color: transparent; /* WebKit */
+    color: transparent;              /* 표준/파폭용 */
+  }
+
+  &__plus {
+    font-size: 24px;
+    font-weight: 800;
+    color: $orange-500;
+  }
+
+  &__slogan {
+    margin-top: 2px;
+    font-size: 12px;
+    color: $gray-500;
+  }
+}
+
+/* ==== 가운데 내비 (필요 시) ==== */
+.mp-nav {
+  ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: $text;
+    font-weight: 600;
+    &:hover { color: $green-700; }
+  }
+}
+
+/* ==== 우측 액션 ==== */
+.mp-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* 등록 버튼: 그린 그라데 + 둥근 + 그림자 */
+.mp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 9999px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 15px;
+
+  &--primary {
+    color: #fff;
+    background: linear-gradient(90deg, $green-500, $green-600);
+    box-shadow: 0 10px 20px rgba(34,197,94,0.35);
+    &:hover {
+      background: linear-gradient(90deg, $green-600, $green-700);
+    }
+  }
+
+  &--ghost {
+    background: #fff;
+    border: 1px solid $gray-100;
+    &:hover { background: $gray-50; }
+  }
+}
+
+.mp-icon { width: 18px; height: 18px; }
+
+/* 알림/유저 아이콘 버튼 */
+.mp-iconbtn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #fff;
+  color: #0a0e1a;
+  border: 1px solid #eef1f4;
+  box-shadow: 0 6px 14px rgba(16,24,40,0.06);
+  transition: transform 0.08s ease, background 0.2s ease;
+
+  svg { width: 20px; height: 20px; }
+  &:hover { background: $gray-50; transform: translateY(-1px); }
+}
+
+.mp-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: $red-500;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 14px rgba(239,68,68,0.35);
+}
+
+/* 반응형 */
+@media (max-width: 640px) {
+  .mp-brand__slogan { display: none; }
+  .mp-nav { display: none; } /* 모바일에선 nav 숨김(원하면 드로어로 대체) */
+  .mp-btn { height: 40px; padding: 0 14px; }
 }
