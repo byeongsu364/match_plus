@@ -18,7 +18,7 @@ const Nav = () => {
     if (getAuthStatus()) {
       navigate("/userinfo")
     } else {
-      navigate("/UserLogin")
+      navigate("/login")
     }
   }
 
