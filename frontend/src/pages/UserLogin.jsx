@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext"; // AuthContext에서 로그인 상태 관리
 
 export default function UserLogin() {
   const navigate = useNavigate();
