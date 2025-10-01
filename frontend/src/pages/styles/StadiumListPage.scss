@@ -1,0 +1,52 @@
+/* src/pages/styles/StadiumListPage.scss */
+.stadium-page {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.stadium-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.stadium-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.stadium-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    background: #fff;
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+}
+
+.stadium-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stadium-info {
+    font-size: 15px;
+    margin: 4px 0;
+    color: #374151;
+}
+
+.stadium-loading,
+.stadium-empty {
+    font-size: 16px;
+    color: #6b7280;
+}

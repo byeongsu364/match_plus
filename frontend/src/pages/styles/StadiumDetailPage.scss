@@ -1,0 +1,23 @@
+/* src/pages/styles/StadiumDetailPage.scss */
+.stadium-detail {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    &__title {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #111827;
+    }
+
+    &__info {
+        font-size: 16px;
+        color: #374151;
+        margin-bottom: 10px;
+    }
+}
