@@ -21,7 +21,6 @@ import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
     <ThemeProvider>
-<<<<<<< HEAD
       <AuthProvider>  
         <Routes>
           <Route path='/' element={<Home />} />
@@ -32,27 +31,6 @@ function App() {
           <Route path='*' element={<Notfound />} />
         </Routes>
       </AuthProvider>
-=======
-      <Routes>
-        {/* 메인 */}
-        <Route path='/' element={<Home />} />
-
-        {/* 관리자 */}
-        <Route path="/admin/login" element={<AuthRedirectRoute Component={AdminLogin} />} />
-        <Route path="/admin/post" element={<RequireAuth Component={AdminPost} />} />
-
-        {/* 사용자 */}
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
-
-        {/* 경기장 */}
-        <Route path="/reservations" element={<StadiumListPage />} />
-        <Route path="/stadiums/:id" element={<StadiumDetailPage />} />
-
-        {/* 404 */}
-        <Route path='*' element={<Notfound />} />
-      </Routes>
->>>>>>> main
     </ThemeProvider>
   )
 }
