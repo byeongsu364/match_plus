@@ -1,26 +1,26 @@
-import React from 'react'
-import useSmoothScroll from '../../hook/useSmoothScroll'
-import { FiBell, FiUser } from "react-icons/fi" 
-import { useNavigate } from "react-router-dom"
-
-// 간단한 로그인 상태 판별 함수(로컬스토리지 토큰 기반, 필요시 수정)
-function getAuthStatus() {
-  return Boolean(localStorage.getItem("token"))
-}
+import React, { useContext } from 'react';
+import useSmoothScroll from '../../hook/useSmoothScroll';
+import { FiBell, FiUser } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext"; // 경로 확인
 
 const Nav = () => {
-  const navLink = ['Hero', 'Aboutme', 'Work', 'Contact']
-  const scrollTo = useSmoothScroll()
-  const navigate = useNavigate()
+  const navLink = ['Hero', 'Aboutme', 'Work', 'Contact'];
+  const scrollTo = useSmoothScroll();
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-  // 아이콘 클릭핸들러
   const handleUserClick = () => {
-    if (getAuthStatus()) {
-      navigate("/userinfo")
+    if (user) {
+      if (user.role === "admin") {
+        navigate("/admin/post");
+      } else {
+        navigate("/userinfo");
+      }
     } else {
-      navigate("/login")
+      navigate("/login");
     }
-  }
+  };
 
   return (
     <nav>
@@ -29,8 +29,8 @@ const Nav = () => {
           <li key={i}>
             <a
               onClick={(e) => {
-                e.preventDefault()
-                scrollTo(nav)
+                e.preventDefault();
+                scrollTo(nav);
               }}
               href={`#${nav}`}
             >
@@ -49,7 +49,7 @@ const Nav = () => {
         />
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

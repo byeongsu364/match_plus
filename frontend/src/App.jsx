@@ -12,21 +12,22 @@ import "./styles/main.scss"
 import "./styles/_themes.scss"
 import './styles/common.scss'
 import { ThemeProvider } from './context/ThemeContext'
+import { AuthProvider } from "./context/AuthContext";
+
 
 function App() {
   return (
     <ThemeProvider>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path="/admin/login" element={<AuthRedirectRoute Component={AdminLogin} />} />
-        <Route path="/admin/post" element={<RequireAuth Component={AdminPost} />} />
-
-        {/* 사용자 로그인 및 회원정보 라우트 추가 */}
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
-
-        <Route path='*' element={<Notfound />} />
-      </Routes>
+      <AuthProvider>  
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path="/admin/login" element={<AuthRedirectRoute Component={AdminLogin} />} />
+          <Route path="/admin/post" element={<RequireAuth Component={AdminPost} />} />
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
+          <Route path='*' element={<Notfound />} />
+        </Routes>
+      </AuthProvider>
     </ThemeProvider>
   )
 }
