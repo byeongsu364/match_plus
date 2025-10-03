@@ -1,24 +1,24 @@
+// Header.jsx
 import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import "./styles/Header.scss";
-import { useTheme } from "../../context/ThemeContext";
-import { FiBell, FiUser, FiPlus } from "react-icons/fi";
+import { FiPlus, FiUser, FiBell } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header className={`mp-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="mp-header__inner">
-        {/* 좌측: 로고 + 텍스트 */}
+        {/* 좌측: 로고 */}
         <a className="mp-brand" href="/" aria-label="Match Plus Home">
           <div className="mp-brand__icon">
             <span className="mp-brand__ball">⚽</span>
@@ -33,29 +33,29 @@ const Header = () => {
           </div>
         </a>
 
-        {/* 가운데: 네비(있으면) */}
+        {/* 가운데: 네비 */}
         <nav className="mp-nav" aria-label="Primary">
           <Nav />
         </nav>
 
-        {/* 우측: 액션들 */}
+        {/* 우측: 액션 버튼 */}
         <div className="mp-actions">
+          {/* 경기 등록 버튼 */}
           <button className="mp-btn mp-btn--primary">
             <FiPlus className="mp-icon" />
             경기 등록
           </button>
 
+          {/* 종 아이콘 (알림) */}
           <button className="mp-iconbtn" aria-label="Notifications">
             <FiBell />
             <span className="mp-badge">3</span>
           </button>
 
-          <button className="mp-iconbtn" aria-label="User">
+          {/* 프로필 아이콘 (로그인/유저 페이지 이동) */}
+          <Link to="/login" className="mp-iconbtn" aria-label="User">
             <FiUser />
-          </button>
-
-          {/* 필요하면 테마 토글 다시 노출 */}
-          {/* <button className="mp-btn mp-btn--ghost" onClick={toggleTheme}>{theme}</button> */}
+          </Link>
         </div>
       </div>
     </header>
