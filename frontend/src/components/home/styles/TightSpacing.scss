@@ -1,0 +1,43 @@
+/* ====== 페이지 전역 섹션 간격 강제 축소 (wrapper 없어도 적용됨) ====== */
+
+/* 공통 섹션들 마진 통일 */
+:is(.stats-root, .service-root, .filter-root, .matchlist-root) {
+  margin: 100px auto !important;
+}
+
+/* 섹션별 미세 조정 */
+.stats-root {
+  margin: 28px auto 36px !important;
+  padding-bottom: 0 !important;
+
+  p { margin-bottom: 20px !important; }
+}
+
+.service-root {
+  margin: 28px auto !important;
+  padding: 24px 16px !important; /* 카드 패딩도 축소 */
+}
+
+/* ✅ 필터 아래 큰 빈 공간 제거의 핵심 */
+.filter-root {
+  margin: 28px auto !important;
+  padding-bottom: 8px !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* 진행 예정 경기 리스트 */
+.matchlist-root {
+  margin: 28px auto 40px !important;
+  padding-bottom: 0 !important;
+}
+
+/* 마지막과 푸터 사이 간격 축소 */
+footer { margin-top: 20px !important; }
+
+/* ====== 내부 요소 약간씩 압축 ====== */
+.service-left h2 { margin-bottom: 18px !important; }
+.service-left ul { gap: 16px !important; }
+.service-right .image-card img { height: 280px !important; }
+
+.stats-root .stats-cards { gap: 20px !important; }
