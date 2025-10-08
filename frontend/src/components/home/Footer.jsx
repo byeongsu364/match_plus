@@ -75,7 +75,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>&copy; 2025 Match Plus. All rights reserved.</p>
-        <p>사업자등록번호: 123-45-67890 | 통신판매업신고: 제2025-서울강남-0000호</p>
+        <p>사업자등록번호: 123-45-67890 | 통신판매업신고: 제2025-경복대학교-0000호</p>
       </div>
     </footer>
   );
