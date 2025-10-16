@@ -1,0 +1,113 @@
+.footer {
+  background: #111827;
+  color: #fff;
+  padding: 3rem 1.5rem;
+  font-size: 1rem; /* ✅ 전체 기본 폰트 크기 확대 (기존 0.875rem → 1rem) */
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem; /* 살짝 넓힘 */
+  }
+
+  .footer-brand {
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      .logo-icon {
+        font-size: 2.2rem; /* ⚽️ 아이콘 조금 더 큼 */
+        background: linear-gradient(90deg, #22c55e, #16a34a);
+        padding: 0.6rem;
+        border-radius: 0.8rem;
+      }
+
+      .logo-text {
+        font-size: 1.7rem; /* 🔹 Match Plus 글씨 확대 */
+        font-weight: 800;
+
+        .highlight {
+          color: #f97316;
+        }
+      }
+    }
+
+    .footer-desc {
+      margin-top: 1rem;
+      color: #d1d5db; /* 조금 더 밝게 */
+      font-size: 1.05rem; /* ✅ 설명문 폰트 확대 */
+      line-height: 1.8;
+    }
+
+    .footer-contact {
+      margin-top: 1rem;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: #cbd5e1;
+        font-size: 1rem; /* ✅ 연락 정보도 조금 확대 */
+      }
+    }
+
+    .footer-socials {
+      margin-top: 1.3rem;
+      display: flex;
+      gap: 1.3rem;
+
+      a {
+        color: #9ca3af;
+        font-size: 1.4rem; /* 아이콘 크기 ↑ */
+        transition: color 0.2s;
+
+        &:hover {
+          color: #22c55e;
+        }
+      }
+    }
+  }
+
+  .footer-links {
+    h4 {
+      font-size: 1.3rem; /* ✅ 섹션 제목 강조 */
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.6rem;
+        color: #cbd5e1;
+        font-size: 1rem; /* ✅ 리스트 항목 확대 */
+        cursor: pointer;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #22c55e;
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    margin-top: 2.5rem;
+    border-top: 1px solid #1f2937;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.95rem; /* ✅ 하단 문구도 살짝 키움 */
+
+    p {
+      margin: 0.3rem 0;
+    }
+  }
+}

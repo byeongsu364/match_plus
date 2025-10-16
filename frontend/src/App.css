@@ -1,0 +1,2 @@
+/* src/index.css (또는 globals.css) 맨 아래 */
+@import "./components/home/styles/TightSpacing.scss";
