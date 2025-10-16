@@ -1,9 +1,9 @@
-// LoginForm.jsx
+// src/pages/LoginForm.jsx
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-export default function LoginForm({ role, redirectPath }) {
+export default function LoginForm() {
     const navigate = useNavigate();
     const { setUser, setIsLoggedIn } = useContext(AuthContext);
 
@@ -27,12 +27,10 @@ export default function LoginForm({ role, redirectPath }) {
                 setUser(data.user);
                 setIsLoggedIn(true);
 
-                // role 체크
-                if (role === "admin" && data.user.role === "admin") {
-                    navigate("/admin/post");
-                } else {
-                    navigate(redirectPath); // user용 리다이렉트
-                }
+                console.log("Login successful, user:", data.user);
+                console.log("Token stored:", localStorage.getItem("token"));
+
+                navigate("/", { replace: true });
             } else {
                 setErrorMsg(data.message || "로그인 실패");
             }
@@ -44,7 +42,7 @@ export default function LoginForm({ role, redirectPath }) {
 
     return (
         <div style={{ padding: "20px" }}>
-            <h2>{role === "admin" ? "관리자 로그인" : "로그인"}</h2>
+            <h2>로그인</h2>
             <form onSubmit={handleLogin}>
                 <div>
                     <label>이메일</label>

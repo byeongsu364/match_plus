@@ -11,8 +11,6 @@ import Filter from '../components/home/Filter'
 const Home = () => {
     return (
         <div>
-            
-            <Header/>
             <Hero/>
             <Stats/>
             <Service/>

@@ -1,10 +1,9 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(); // named export
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null); // { userId, role, name 등 }
+    const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -14,7 +13,7 @@ export const AuthProvider = ({ children }) => {
                 const payload = JSON.parse(atob(token.split(".")[1]));
                 setUser(payload);
                 setIsLoggedIn(true);
-            } catch (err) {
+            } catch {
                 localStorage.removeItem("token");
                 setUser(null);
                 setIsLoggedIn(false);
