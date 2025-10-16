@@ -7,7 +7,7 @@ import "./styles/Nav.scss";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user, setIsLoggedIn } = useContext(AuthContext);
   const { theme } = useTheme();
 
   // 유저 버튼 클릭
@@ -24,6 +24,22 @@ const Nav = () => {
     localStorage.removeItem("token"); // 토큰 삭제
     setIsLoggedIn(false); // 상태 업데이트
     navigate("/"); // 메인페이지로 이동
+  };
+
+  // 경기 신청 버튼 클릭
+  const handleReservationClick = () => {
+    if (!isLoggedIn) {
+      navigate("/login"); // 로그인 안 되어 있으면 로그인 페이지
+      return;
+    }
+
+    // admin이면 관리자 예약 페이지
+    if (user?.role === "admin") {
+      navigate("/admin/reservation");
+    } else {
+      // 일반 유저는 기존 경기 신청 페이지
+      navigate("/reservations");
+    }
   };
 
   return (
@@ -43,10 +59,8 @@ const Nav = () => {
       </a>
 
       <div className="mp-actions">
-        <button
-          className="mp-btn mp-btn--primary"
-          onClick={() => navigate("/reservations")}
-        >
+        {/* 권한에 따라 이동 경로 변경 */}
+        <button className="mp-btn mp-btn--primary" onClick={handleReservationClick}>
           <FiPlus className="mp-icon" /> 경기 신청
         </button>
 
@@ -60,20 +74,13 @@ const Nav = () => {
         </button>
 
         {/* 기존 유저 버튼 항상 유지 */}
-        <button
-          className="mp-iconbtn"
-          aria-label="User"
-          onClick={handleUserClick}
-        >
+        <button className="mp-iconbtn" aria-label="User" onClick={handleUserClick}>
           <FiUser />
         </button>
 
-        {/* 로그인 상태일 때만 로그아웃 버튼 추가 */}
+        {/* 로그인 상태일 때만 로그아웃 버튼 */}
         {isLoggedIn && (
-          <button
-            className="mp-logout-btn"
-            onClick={handleLogout}
-          >
+          <button className="mp-logout-btn" onClick={handleLogout}>
             로그아웃
           </button>
         )}
