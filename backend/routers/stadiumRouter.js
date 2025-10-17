@@ -4,32 +4,49 @@ const express = require("express");
 const router = express.Router();
 const Stadium = require("../models/StadiumSchema");
 const { authMiddleware, adminOnly } = require("../middleware/auth");
-const mongoose = require("mongoose"); // ADDED: For ObjectId validation
+const mongoose = require("mongoose");
 
 // --- 구장 등록 (관리자 전용) ---
-router.post("/", authMiddleware, adminOnly, async (req, res, next) => { // ADDED: next
+router.post("/", authMiddleware, adminOnly, async (req, res, next) => {
     try {
         const { name, location, capacity, available_times } = req.body;
-        const stadium = await Stadium.create({ name, location, capacity, available_times });
+
+        if (!name || !location || !capacity || !available_times) {
+            return res.status(400).json({ message: "필수 데이터가 누락되었습니다." });
+        }
+
+        // location 안의 coordinates가 배열인지 체크
+        if (!Array.isArray(location.coordinates) || location.coordinates.length !== 2) {
+            return res.status(400).json({ message: "위치 좌표가 올바르지 않습니다." });
+        }
+
+        const stadium = await Stadium.create({
+            name,
+            location, // 프론트에서 보낸 location 객체 그대로 사용
+            capacity,
+            available_times,
+        });
+
         res.status(201).json(stadium);
     } catch (err) {
-        next(err); // 에러 핸들러로 전달
+        console.error(err);
+        res.status(500).json({ message: "구장 등록 중 서버 오류가 발생했습니다." });
     }
 });
 
 // --- 전체 구장 조회 ---
-router.get("/", async (req, res, next) => { // ADDED: next
+router.get("/", async (req, res) => {
     try {
         const stadiums = await Stadium.find();
         res.json(stadiums);
     } catch (err) {
-        next(err); // 에러 핸들러로 전달
+        console.error(err);
+        res.status(500).json({ message: "구장 조회 중 오류가 발생했습니다." });
     }
 });
 
 // --- 개별 구장 상세 조회 ---
-// ADDED: New Route
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -42,13 +59,13 @@ router.get("/:id", async (req, res, next) => {
         }
         res.json(stadium);
     } catch (err) {
-        next(err);
+        console.error(err);
+        res.status(500).json({ message: "구장 조회 중 오류가 발생했습니다." });
     }
 });
 
 // --- 구장 정보 수정 (관리자 전용) ---
-// ADDED: New Route
-router.patch("/:id", authMiddleware, adminOnly, async (req, res, next) => {
+router.patch("/:id", authMiddleware, adminOnly, async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -58,7 +75,7 @@ router.patch("/:id", authMiddleware, adminOnly, async (req, res, next) => {
         const updatedStadium = await Stadium.findByIdAndUpdate(
             id,
             req.body,
-            { new: true, runValidators: true } // new: true는 업데이트된 문서를 반환, runValidators: true는 스키마 유효성 검사 실행
+            { new: true, runValidators: true }
         );
 
         if (!updatedStadium) {
@@ -66,13 +83,13 @@ router.patch("/:id", authMiddleware, adminOnly, async (req, res, next) => {
         }
         res.json({ message: "구장 정보가 성공적으로 수정되었습니다.", stadium: updatedStadium });
     } catch (err) {
-        next(err);
+        console.error(err);
+        res.status(500).json({ message: "구장 수정 중 오류가 발생했습니다." });
     }
 });
 
 // --- 구장 삭제 (관리자 전용) ---
-// ADDED: New Route
-router.delete("/:id", authMiddleware, adminOnly, async (req, res, next) => {
+router.delete("/:id", authMiddleware, adminOnly, async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -86,7 +103,8 @@ router.delete("/:id", authMiddleware, adminOnly, async (req, res, next) => {
         }
         res.status(200).json({ message: "구장이 성공적으로 삭제되었습니다." });
     } catch (err) {
-        next(err);
+        console.error(err);
+        res.status(500).json({ message: "구장 삭제 중 오류가 발생했습니다." });
     }
 });
 
