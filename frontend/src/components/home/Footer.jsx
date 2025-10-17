@@ -15,7 +15,9 @@ const Footer = () => {
         <div className="footer-brand">
           {/* ✅ 로고/브랜드 전체를 홈으로 이동 */}
           <Link to="/" className="footer-logo" aria-label="홈으로 이동">
-            <span className="logo-icon">⚽</span>
+             <div className="mp-brand__icon">
+          <img src="../../../img/match_plus.png" className="mp-icon" alt="Match Plus 로고" />
+        </div>
             <span className="logo-text">
               Match <span className="highlight">Plus</span>
             </span>

@@ -37,9 +37,9 @@ const Nav = () => {
       {/* 좌측: 로고 + 텍스트 */}
       <a className="mp-brand" href="/" aria-label="Match Plus Home">
         <div className="mp-brand__icon">
-          <span className="mp-brand__ball">⚽</span>
-          <span className="mp-brand__badge">+</span>
+          <img src="../../../img/match_plus.png" className="mp-icon" alt="Match Plus 로고" />
         </div>
+
         <div className="mp-brand__text">
           <div className="mp-brand__row">
             <span className="mp-brand__match">Match</span>
