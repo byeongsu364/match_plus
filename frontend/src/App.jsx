@@ -36,7 +36,8 @@ function AppRoutes() {
       <Routes>
         {/* 홈 & 로그인 */}
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginForm role="user" redirectPath="/" />} />
+
 
         {/* 로그인 필요 페이지 */}
         <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
