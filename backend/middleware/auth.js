@@ -9,7 +9,13 @@ const authMiddleware = (req, res, next) => {
     const token = authHeader.split(" ")[1];
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
-        req.user = decoded; // userId, role
+
+        // ✅ userId, _id, id 어떤 키로 와도 일관되게 처리
+        req.user = {
+            userId: decoded.userId || decoded._id || decoded.id,
+            role: decoded.role,
+        };
+
         next();
     } catch (err) {
         return res.status(401).json({ message: "토큰이 유효하지 않습니다." });

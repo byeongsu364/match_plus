@@ -15,6 +15,8 @@ import './styles/common.scss';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import Header from './components/home/Header';
+import StadiumListPage from './pages/StadiumListPage';
+import StadiumDetailPage from './pages/StadiumDetailPage';
 
 function App() {
   return (
@@ -41,6 +43,14 @@ function AppRoutes() {
 
         {/* 로그인 필요 페이지 */}
         <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
+
+
+        {/* 유저 구장 관련 */}
+        <Route path="/reservations" element={<RequireAuth Component={StadiumListPage} />} />
+        <Route path="/stadiums/:id" element={<RequireAuth Component={StadiumDetailPage} />} />
+
+
+        
 
         {/* 관리자 전용 페이지 */}
         <Route
