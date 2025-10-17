@@ -9,12 +9,12 @@ const Header = () => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header className={`mp-header ${scrolled ? "is-scrolled" : ""}`}>
-      <Nav/>
+      <Nav /> {/* Nav는 여기서만 렌더링 */}
     </header>
   );
 };
