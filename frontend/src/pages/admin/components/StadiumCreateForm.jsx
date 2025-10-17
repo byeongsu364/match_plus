@@ -2,6 +2,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext"; // 경로 확인
+import './styles/StadiumCreateForm.scss'
 
 const StadiumCreateForm = () => {
     const { token } = useContext(AuthContext); // 🔹 토큰 가져오기

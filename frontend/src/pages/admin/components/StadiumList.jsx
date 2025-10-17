@@ -1,6 +1,7 @@
 // src/pages/admin/components/StadiumList.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './styles/StadiumList.scss'
 
 const StadiumList = () => {
     const [stadiums, setStadiums] = useState([]);

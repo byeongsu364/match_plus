@@ -4,7 +4,7 @@ import UserDetails from "./info/UserDetails";
 import ReservationCard from "./info/ReservationCard";
 import RecentMatchCard from "./info/RecentMatchCard";
 import { AuthContext } from "../context/AuthContext";
-// import "./UserInfo.scss";
+import "./styles/UserInfo.scss";
 
 const UserInfo = () => {
   const { token } = useContext(AuthContext); // 로그인 토큰

@@ -1,0 +1,145 @@
+/* ============================
+   Admin Stadium List — Green UI
+   ============================ */
+:root{
+  --bg:#f6fbf7; --panel:#fff; --text:#0f172a; --muted:#6b7280; --line:rgba(15,23,42,.08);
+  --g-600:#16a34a; --g-700:#15803d; --g-200:#bbf7d0;
+  --b-500:#2563eb; --o-500:#f97316;
+  --shadow-1:0 10px 30px rgba(22,163,74,.12);
+}
+
+.admin-stadium{
+  background:var(--bg);
+  color:var(--text);
+  padding: clamp(16px, 2.4vw, 28px);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow: var(--shadow-1);
+
+  h2{
+    font-weight:800;
+    font-size: clamp(18px, 2.2vw, 22px);
+    margin:0 0 16px;
+    display:flex; align-items:center; gap:10px;
+
+    &::after{
+      content:"";
+      flex:1 1 auto; height:1px;
+      background: linear-gradient(90deg, var(--line), transparent 70%);
+    }
+  }
+
+  > p{
+    background:var(--panel);
+    border:1px dashed var(--line);
+    border-radius:14px;
+    padding:18px;
+    color:var(--muted);
+    text-align:center;
+  }
+}
+
+/* 공통 admin-table 스타일에 살짝 보강(열별 가독성) */
+.admin-stadium .admin-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow: var(--shadow-1);
+
+  thead th{
+    background:
+      radial-gradient(120% 120% at 0% 0%, rgba(34,197,94,.08), transparent 60%),
+      var(--panel);
+    color:#0b3c1c;
+    font-weight:800;
+    text-align:left;
+    padding:14px 16px;
+    font-size:14px;
+    border-bottom:1px solid var(--line);
+  }
+
+  tbody td{
+    padding:14px 16px;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+
+  /* 1열: 이름 – 강조 */
+  tbody td:nth-child(1){
+    font-weight:700;
+  }
+
+  /* 2열: 좌표 – 모노스페이스 + pill */
+  tbody td:nth-child(2){
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color:#0b3c1c;
+
+    /* 좌표 텍스트를 pill처럼 */
+    display:inline-block;
+    background:#f1f5f9;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:6px 10px;
+  }
+
+  /* 3열: 수용 인원 – 숫자 강조 */
+  tbody td:nth-child(3){
+    font-weight:800;
+    color:#111827;
+  }
+
+  /* 4열: 가능 시간 – 여러 개일 때도 줄바꿈 허용 */
+  tbody td:nth-child(4){
+    color:#0f172a;
+    white-space: normal;
+    line-height: 1.5;
+
+    /* 쉼표 뒤 간격 보정 */
+    b{ font-weight:700; }
+  }
+
+  /* 행 상태 인터랙션 */
+  tbody tr{
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  tbody tr:nth-child(odd){
+    background: color-mix(in srgb, var(--panel) 94%, var(--g-200));
+  }
+  tbody tr:hover{
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--panel) 88%, var(--g-200));
+  }
+}
+
+/* 작은 화면: 카드 리스트로 전환 */
+@media (max-width: 800px){
+  .admin-stadium .admin-table{
+    display:block; border:0; background:transparent; box-shadow:none;
+  }
+  .admin-stadium .admin-table thead{ display:none; }
+  .admin-stadium .admin-table tbody{ display:grid; gap:14px; }
+  .admin-stadium .admin-table tr{
+    display:grid; grid-template-columns:1fr;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px; overflow:hidden;
+  }
+  .admin-stadium .admin-table td{
+    border:0;
+    display:grid; grid-template-columns: 120px 1fr;
+    gap:8px; padding:12px 16px;
+  }
+  .admin-stadium .admin-table td:nth-child(1)::before{ content:"이름"; color:#667085; font-weight:700; }
+  .admin-stadium .admin-table td:nth-child(2)::before{ content:"좌표(위도, 경도)"; color:#667085; font-weight:700; }
+  .admin-stadium .admin-table td:nth-child(3)::before{ content:"수용 인원"; color:#667085; font-weight:700; }
+  .admin-stadium .admin-table td:nth-child(4)::before{ content:"가능 시간"; color:#667085; font-weight:700; }
+
+  /* 모바일에서 pill 좌표는 가로폭에 맞게 */
+  .admin-stadium .admin-table td:nth-child(2){
+    display:block;
+  }
+}

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReservationList from "./components/ReservationList.jsx";
 import StadiumList from "./components/StadiumList";
 import StadiumCreateForm from "./components/StadiumCreateForm.jsx";
-// import "./AdminReservation.scss";
+import "./components/styles/AdminReservation.scss";
 
 const AdminReservation = () => {
     const [activeTab, setActiveTab] = useState("reservations");

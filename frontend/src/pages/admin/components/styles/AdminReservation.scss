@@ -1,0 +1,110 @@
+/* ================================
+   Admin Reservation Tabs (Green)
+   ================================ */
+:root{
+  --bg:#f6fbf7;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --muted:#6b7280;
+  --line:rgba(15,23,42,.08);
+
+  --g-500:#22c55e;
+  --g-600:#16a34a;
+  --g-700:#15803d;
+
+  --shadow-1:0 10px 22px rgba(22,163,74,.12);
+  --shadow-2:0 16px 34px rgba(22,163,74,.16);
+}
+
+/* 전체 컨테이너 */
+.admin-reservation-container{
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow-1);
+  padding: clamp(16px, 2.6vw, 28px);
+}
+
+/* 타이틀 */
+.admin-reservation-container > h1{
+  font-weight:800;
+  font-size: clamp(18px, 2.4vw, 26px);
+  margin: 0 0 16px;
+}
+
+/* 탭 바 */
+.admin-tabs{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  background: var(--panel);
+  border:1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: var(--shadow-1);
+}
+
+/* 탭 버튼 */
+.tab-btn{
+  position: relative;
+  appearance: none;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#0b3c1c;
+  font-weight: 800;
+  letter-spacing:.01em;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+
+  &:hover{
+    transform: translateY(-1px);
+    border-color: rgba(22,163,74,.35);
+    box-shadow: 0 6px 18px rgba(22,163,74,.15);
+  }
+
+  &:focus-visible{
+    outline: 3px solid rgba(34,197,94,.35);
+    outline-offset: 2px;
+  }
+
+  &.active{
+    background: linear-gradient(180deg, #eafff1 0%, #ffffff 60%);
+    color: var(--g-700);
+    border-color: rgba(22,163,74,.45);
+    box-shadow: var(--shadow-2);
+
+    /* 아래쪽 선택 표시 */
+    &::after{
+      content:"";
+      position:absolute;
+      left: 12px; right: 12px; bottom: -8px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--g-600);
+      box-shadow: 0 6px 14px rgba(22,163,74,.35);
+    }
+  }
+}
+
+/* 탭 콘텐츠 영역 */
+.admin-tab-content{
+  margin-top: 22px;
+  background: var(--panel);
+  border:1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(14px, 2vw, 20px);
+  box-shadow: var(--shadow-1);
+}
+
+/* 좁은 화면: 탭 버튼을 100% 폭으로 */
+@media (max-width: 640px){
+  .admin-tabs{ gap:8px; }
+  .tab-btn{
+    flex: 1 1 100%;
+    text-align:center;
+  }
+}

@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
+import './styles/ReservationList.scss'
 
 const ReservationList = () => {
     const { token, user } = useContext(AuthContext);
