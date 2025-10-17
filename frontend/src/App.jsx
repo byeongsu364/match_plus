@@ -1,45 +1,62 @@
 // src/App.jsx
-import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import Home from "./pages/Home"
-import AdminLogin from "./pages/AdminLogin"
-import AdminPost from "./pages/AdminPost"
-import UserLogin from "./pages/UserLogin"
-import UserInfo from "./pages/UserInfo"
-import Notfound from "./pages/Notfound"
-import StadiumListPage from "./pages/StadiumListPage"
-import StadiumDetailPage from "./pages/StadiumDetailPage"
-import AuthRedirectRoute from './routes/AuthRedirectRoute'
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import React, { useContext } from 'react';
+import Home from "./pages/Home";
+import UserInfo from "./pages/UserInfo";
+import Notfound from "./pages/Notfound";
+import LoginForm from './pages/LoginForm';
 import RequireAuth from './routes/RequireAuth';
-import "./styles/main.scss"
-import "./styles/_themes.scss"
-import './styles/common.scss'
-import { ThemeProvider } from './context/ThemeContext'
+import AdminStadium from './pages/admin/AdminStadium';
+import AdminReservation from './pages/admin/AdminReservation';
+import "./styles/main.scss";
+import "./styles/_themes.scss";
+import './styles/common.scss';
+import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider, AuthContext } from "./context/AuthContext";
+import Header from './components/home/Header';
 
 function App() {
   return (
     <ThemeProvider>
-      <Routes>
-        {/* 메인 */}
-        <Route path='/' element={<Home />} />
-
-        {/* 관리자 */}
-        <Route path="/admin/login" element={<AuthRedirectRoute Component={AdminLogin} />} />
-        <Route path="/admin/post" element={<RequireAuth Component={AdminPost} />} />
-
-        {/* 사용자 */}
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
-
-        {/* 경기장 */}
-        <Route path="/reservations" element={<StadiumListPage />} />
-        <Route path="/stadiums/:id" element={<StadiumDetailPage />} />
-
-        {/* 404 */}
-        <Route path='*' element={<Notfound />} />
-      </Routes>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+function AppRoutes() {
+  const { isLoggedIn } = useContext(AuthContext);
+
+  return (
+    <>
+      <Header key={isLoggedIn ? "loggedIn" : "loggedOut"} />
+
+      <Routes>
+        {/* 홈 & 로그인 */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginForm role="user" redirectPath="/" />} />
+
+
+        {/* 로그인 필요 페이지 */}
+        <Route path="/userinfo" element={<RequireAuth Component={UserInfo} />} />
+
+        {/* 관리자 전용 페이지 */}
+        <Route
+          path="/admin/stadium"
+          element={<RequireAuth Component={AdminStadium} requiredRole="admin" />}
+        />
+        <Route
+          path="/admin/reservation"
+          element={<RequireAuth Component={AdminReservation} requiredRole="admin" />}
+        />
+
+        {/* 없는 페이지 */}
+        <Route path="*" element={<Notfound />} />
+      </Routes>
+    </>
+  );
+}
+
+export default App;

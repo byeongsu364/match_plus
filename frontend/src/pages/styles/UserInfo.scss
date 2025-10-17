@@ -1,0 +1,99 @@
+/* =========================
+   UserInfo Page Typography Fix
+   ========================= */
+:root {
+  --ui-bg: #f8fdf9;
+  --panel: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: rgba(15,23,42,0.08);
+
+  --g-500: #22c55e;
+  --g-600: #16a34a;
+  --g-700: #15803d;
+
+  --shadow-1: 0 8px 20px rgba(22,163,74,0.1);
+}
+
+/* 페이지 기본 */
+.userinfo-page {
+  background: var(--ui-bg);
+  color: var(--text);
+  font-family: "Noto Sans KR", "Pretendard", sans-serif;
+  padding: clamp(20px, 2vw, 32px);
+  border-radius: 16px;
+  box-shadow: var(--shadow-1);
+}
+
+/* 제목 스타일 */
+.userinfo-page > h2 {
+  font-weight: 800;
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  color: var(--g-700);
+}
+
+.userinfo-page > h3 {
+  margin-top: 36px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text);
+  border-left: 5px solid var(--g-600);
+  padding-left: 10px;
+}
+
+/* 섹션 공통 카드 느낌 */
+.user-details,
+.reservation-list,
+.recent-match-list {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* 사용자 정보 영역 */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+
+  .user-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    span.label {
+      min-width: 70px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    span.value {
+      color: var(--text);
+      font-weight: 500;
+    }
+  }
+}
+
+/* 예약/경기 리스트 */
+.reservation-list,
+.recent-match-list {
+  text-align: center;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .userinfo-page {
+    padding: 16px;
+  }
+  .user-details {
+    font-size: 14px;
+  }
+}

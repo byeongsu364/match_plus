@@ -1,0 +1,159 @@
+/* ===========================
+   LoginForm.scss (Green & White Theme)
+   =========================== */
+
+/* 🎨 컬러 팔레트 */
+$bg: #e8f5e9;            // 전체 배경 (연한 초록)
+$card: #ffffff;          // 카드 배경 (흰색)
+$text: #1b4332;          // 기본 텍스트 (짙은 초록)
+$muted: #6b8f71;         // 서브 텍스트
+$green: #2e7d32;         // 버튼 기본 초록
+$green-light: #4caf50;   // 밝은 초록 (hover)
+$accent: #81c784;        // 포커스 효과
+$error: #e53935;         // 에러 텍스트
+
+$radius-2xl: 1.25rem;
+$shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+$transition: 200ms ease;
+
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 48px);
+  background: linear-gradient(180deg, #f1f8e9 0%, $bg 100%);
+
+  &--admin {
+    background: linear-gradient(180deg, #f9fbe7 0%, #dcedc8 100%);
+    .login__badge {
+      background: linear-gradient(135deg, #66bb6a, #43a047);
+    }
+    .login__button {
+      background: linear-gradient(135deg, #66bb6a, #43a047);
+      &:hover { background: linear-gradient(135deg, #81c784, #43a047); }
+    }
+  }
+}
+
+.login__card {
+  width: min(460px, 100%);
+  border-radius: $radius-2xl;
+  background: $card;
+  box-shadow: $shadow-lg;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 32px 28px;
+}
+
+.login__header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login__badge {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  padding: 6px 10px;
+  color: #ffffff;
+  border-radius: 999px;
+  background: linear-gradient(135deg, $green, $green-light);
+}
+
+.login__title {
+  margin-top: 12px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  color: $text;
+  font-weight: 800;
+}
+
+.login__subtitle {
+  color: $muted;
+  font-size: 14px;
+}
+
+.login__form {
+  display: grid;
+  gap: 16px;
+}
+
+.login__field {
+  display: grid;
+  gap: 8px;
+}
+
+.login__label {
+  color: $text;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login__input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #c8e6c9;
+  background: #f9fff9;
+  color: $text;
+  transition: $transition;
+
+  &::placeholder {
+    color: #a5d6a7;
+  }
+
+  &:hover {
+    border-color: $accent;
+    background: #ffffff;
+  }
+
+  &:focus {
+    border-color: $green-light;
+    box-shadow: 0 0 0 4px rgba($accent, 0.3);
+    outline: none;
+  }
+
+  &.is-invalid {
+    border-color: $error;
+    box-shadow: 0 0 0 4px rgba($error, 0.15);
+  }
+}
+
+.login__error {
+  background: rgba($error, 0.1);
+  color: $error;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 1px solid rgba($error, 0.3);
+}
+
+.login__button {
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, $green, $green-light);
+  box-shadow: 0 8px 16px rgba($green, 0.2);
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, $green-light, #66bb6a);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  .login__card {
+    padding: 24px 20px;
+  }
+  .login__title {
+    font-size: 20px;
+  }
+}

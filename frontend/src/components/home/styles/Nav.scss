@@ -79,7 +79,7 @@ $radius: 14px;
         height: 18px;
         font-size: 11px;
         font-weight: 800;
-        color: #fff;
+        color: #ffffff;
         background: $orange-500;
         border-radius: 9999px;
         display: grid;
@@ -168,7 +168,7 @@ $radius: 14px;
     font-size: 15px;
 
     &--primary {
-        color: #fff;
+        color: #ffffff;
         background: linear-gradient(90deg, $green-500, $green-600);
         box-shadow: 0 10px 20px rgba(34, 197, 94, 0.35);
 
@@ -178,7 +178,7 @@ $radius: 14px;
     }
 
     &--ghost {
-        background: #fff;
+        background: #ffffff;
         border: 1px solid $gray-100;
 
         &:hover {
@@ -187,10 +187,21 @@ $radius: 14px;
     }
 }
 
-.mp-icon {
-    width: 18px;
-    height: 18px;
+.mp-brand__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+
+    .mp-icon {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.4rem;
+        object-fit: cover;
+    }
 }
+
 
 /* 알림/유저 아이콘 버튼 */
 .mp-iconbtn {
@@ -202,7 +213,7 @@ $radius: 14px;
     border-radius: 12px;
     background: #fff;
     color: #0a0e1a;
-    border: 1px solid #eef1f4;
+    border: 1px solid #d8d8d8;
     box-shadow: 0 6px 14px rgba(16, 24, 40, 0.06);
     transition: transform 0.08s ease, background 0.2s ease;
 
@@ -225,7 +236,7 @@ $radius: 14px;
     height: 20px;
     font-size: 11px;
     font-weight: 800;
-    color: #fff;
+    color: #ffffff;
     background: $red-500;
     border-radius: 9999px;
     display: grid;

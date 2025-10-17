@@ -1,0 +1,129 @@
+/* ================================
+   Stadium Create Form — Clean Green
+   ================================ */
+:root {
+  --bg: #f6fbf7;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --line: rgba(15, 23, 42, .08);
+
+  --g-500: #22c55e;
+  --g-600: #16a34a;
+  --g-700: #15803d;
+
+  --r-500: #ef4444;
+
+  --shadow-1: 0 10px 24px rgba(22,163,74,.10);
+  --shadow-2: 0 16px 34px rgba(22,163,74,.16);
+}
+
+/* 컨테이너 제목 (현재 컴포넌트에서 h2 바로 쓰는 경우) */
+h2 {
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 22px);
+  margin: 0 0 14px;
+  color: var(--text);
+}
+
+/* 카드형 폼 */
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));  /* 데스크탑 2열 */
+  gap: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(14px, 2vw, 24px);
+  box-shadow: var(--shadow-1);
+
+  /* 맨 마지막 버튼은 전체 폭으로 */
+  > button[type="submit"] {
+    grid-column: 1 / -1;
+    justify-self: end;
+    min-width: 160px;
+    height: 44px;
+    border: 0;
+    border-radius: 12px;
+    padding: 0 18px;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(180deg, var(--g-500), var(--g-600));
+    box-shadow: 0 8px 22px rgba(34, 197, 94, .25);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-2);
+      filter: saturate(1.05);
+    }
+    &:active { transform: translateY(0); }
+    &:disabled {
+      opacity: .6; cursor: not-allowed; filter: grayscale(.1);
+      box-shadow: none;
+    }
+  }
+}
+
+/* 인풋 공통 */
+.admin-form input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  transition: border-color .12s ease, box-shadow .12s ease, background .12s ease;
+
+  &::placeholder { color: var(--muted); }
+
+  &:hover { border-color: rgba(22,163,74,.28); }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(22,163,74,.55);
+    box-shadow: 0 0 0 4px rgba(34,197,94,.15);
+    background: #fefefe;
+  }
+
+  /* 간단 에러 톤 (브라우저 기본 유효성) */
+  &:user-invalid {
+    border-color: rgba(239,68,68,.6);
+    box-shadow: 0 0 0 4px rgba(239,68,68,.12);
+  }
+}
+
+/* 숫자 입력 화살표 제거(크롬/사파리) */
+.admin-form input[type="number"]::-webkit-outer-spin-button,
+.admin-form input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.admin-form input[type="number"] { -moz-appearance: textfield; }
+
+/* 필드 배치: 이름은 2열, 좌표/정원/시간은 1열 */
+.admin-form input[name="name"] { grid-column: 1 / -1; }
+
+/* 시간 입력 placeholder 가독성 */
+.admin-form input[name="available_times"] {
+  /* 예: "10:00-12:00, 18:00-20:00" */
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+}
+
+/* 반응형: 모바일 1열 */
+@media (max-width: 700px) {
+  .admin-form { grid-template-columns: 1fr; }
+  .admin-form > button[type="submit"] { justify-self: stretch; }
+}
+
+/* 다크테마(optional): data-theme="dark" 사용 시 */
+[data-theme="dark"] .admin-form {
+  background: #0f1712;
+  border-color: rgba(229,243,234,.08);
+}
+[data-theme="dark"] .admin-form input {
+  background: #0b120d;
+  border-color: rgba(229,243,234,.10);
+  color: #e5f3ea;
+}

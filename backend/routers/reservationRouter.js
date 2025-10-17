@@ -53,16 +53,50 @@ router.post("/", authMiddleware, async (req, res, next) => { // ADDED: next
 });
 
 // --- 내 예약 조회 ---
-router.get("/my", authMiddleware, async (req, res, next) => { // ADDED: next
+router.get("/my", authMiddleware, async (req, res, next) => {
     try {
-        const reservations = await Reservation.find({ user: req.user.userId })
-            .populate("stadium", "name location") // stadium 필드에서 name과 location만 가져오기
-            .sort({ createdAt: -1 }); // 최신순으로 정렬
+        const { recent } = req.query;
+
+        let query = Reservation.find({ user: req.user.userId }).populate("stadium", "name location");
+
+        if (recent === "true") {
+            query = query.sort({ createdAt: -1 }).limit(5);
+        } else {
+            query = query.sort({ createdAt: -1 });
+        }
+
+        const reservations = await query;
         res.json(reservations);
     } catch (err) {
-        next(err); // 에러 핸들러로 전달
+        next(err);
     }
 });
+
+// --- 특정 유저 예약 조회 ---
+router.get("/user/:id", authMiddleware, async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: "유효하지 않은 사용자 ID입니다." });
+        }
+
+        const query = Reservation.find({ user: id })
+            .populate("stadium", "name location")
+            .sort({ createdAt: -1 });
+
+        if (req.query.recent === "true") {
+            query.limit(5);
+        }
+
+        const reservations = await query;
+        res.json(reservations);
+    } catch (err) {
+        next(err);
+    }
+});
+
+
 
 // --- 예약 취소 ---
 // ADDED: New Route
