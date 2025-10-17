@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const Reservation = require("../models/ReservationSchema");
-const Stadium = require("../models/StadiumSchema");
+const Stadium = require("../models/stadiumSchema");
 const { authMiddleware, adminOnly } = require("../middleware/auth");
 const mongoose = require("mongoose"); // ADDED: For ObjectId validation
 
